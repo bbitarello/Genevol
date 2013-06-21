@@ -2,8 +2,9 @@
 
 
 #########################################################################################################################################
-#  Program: final project (BIO5793)       Created in: 17.10.2012																		#
-#                                                                                                                                       #
+#  Program: final project (BIO5793)       Created in: 17.10.2012									#		
+#																	#
+#                             HLA consensus: a perl script which creates consensus sequences for HLA allelic lineages and other things. #
 #                                                                                                                                       #
 #  Author(s): Barbara Bitarello & Debora Brandt                                                                                         #
 #                                                                                                                                       #
@@ -35,7 +36,7 @@
 ### 1. Read in (interactively) the options given by the user: an alignment in fasta format (F) or IMGT format (I);  name of the alignment file;  name of the table containing the alleles for each individual; name of the file where final alignment will be written;  threshhold value.
 ### 2. Read in the table and create an array with all the exclusive allele names in the table. Create another array with all the occurrences of the alleles in the table (with repetition). 
 ### (subroutine POP_TABLE).
-### 3. If the initial alignment is in fasta format (option F): 
+### 3. If the initial alignment is in fasta format (option F):
 ### 3.1. create a hash with the sequences from the input fasta file that have the first two sets of digits equal to those of any allele present in the table.
 ### 4. If the initial alignment is in IMGT format (option I):
 ### 4.1. convert this alignment to fasta format (subroutine PARSING_IMGT);
