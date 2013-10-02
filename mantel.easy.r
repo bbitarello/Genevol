@@ -1,18 +1,64 @@
+#############################################
+################Mantel Easy##################
+#############################################
+#############################################
+####Creation: 2010 ##########################
+####Last modified: 02.10.2013################
+#############################################
+
+
+#mantel.easy                         package:NA                    R Documentation
+
+
+#Mantel Test
+
+
+#Description:
+
+#A simple function which executes a Mantel Test. The input must consist of two distance/similarity square matrices. 
+#The function allows visualization of a histogram os the correlations (null distribution) and the choice of the preferred method for #correlation calculation. Also, and most importantly, it provides alternatives for the treatment of missing data. 
+
+
+
+#Uma função simples que executa um teste de Mantel baseado em permutações. Os dados de entrada devem ser duas matrizes de distância/#similaridade simétricas e quadradas. A função permite a visualização do histograma de correlações (distribuição nula) e a escolha do #método de cálculo de correlação, além de fornecer alternativas para o tratamento de dados faltantes.
+
+
+#Usage:
+
+#mantel.easy(x,y,nperm=1000, method="pearson", na.action="complete.obs",hist=T)
+
+
+#Arguments:
+
+#x,y: distance similarity matrix 1 and distance/similarity matrix 2.
+
+#nperm: number of permutations to be performed. These will generate the null distribution for the test.
+
+#method: correlation calculation method ('pearson', 'kendall', 'spearman').
+
+#na.action: how to handle missing data (NAs).
+
+#hist: logical. If 'TRUE', the function will plot an histogram with the correlations (null distribution) and show where the real correlation fits into that distribution.
+
+
+################################################################################################
+#the code.
+
 mantel.easy<-function(x,y,nperm=1000, method="pearson",na.action="complete.obs",hist=T){
-  ##primeiro: verificar se ambos os objetos s„o matrizes quadradas
+  ##first: check if both objects are square matrices.
   if(ncol(x)!=nrow(x)|ncol(y)!=nrow(y)){
     cat("ERROR! You must provide two distance/similarity SQUARE matrices as input\n")
     stop()
     break
   }
-  ##verificar se as matrizes tem mesmo tamanho
+  ##check if the two matrices have the same dimensions.
   if(dim(x)[1]!=dim(y)[1]){
     cat("ERROR! Distance matrices must have the same length\n")
     stop()
     break
   }
   
-  n<-dim(x)[1]#n˙mero de colunas ou linhas de cada matriz
+  n<-dim(x)[1]#number of lines in each matrix (same as number of collumns)
   
   if(nperm != 0){
     j<-seq(from=1, to=nperm,by=nperm/10)
@@ -110,3 +156,16 @@ mantel.easy<-function(x,y,nperm=1000, method="pearson",na.action="complete.obs",
 }
 
 
+
+
+##################################################
+#example
+
+#as.vector(rnorm(780,0.5, 7))->x1
+#x2<-x1 + c(rep(0.05,390), rep(3,390))
+
+#making.matrix(x1)->mat1
+#making.matrix(x2)->mat2
+
+
+#mantel.easy(mat1, mat2)
