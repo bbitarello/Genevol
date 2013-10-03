@@ -70,10 +70,10 @@ mantel.easy<-function(x,y,nperm=1000, method="pearson",na.action="complete.obs",
     m1<-x[row(x)!=col(x)]
     m2<-y[row(y)!=col(y)]
     na.m1<-sum(is.na(m1))
-    na.m2<-sum(is.na(m2)) #coloca em m1 e m2 apenas os valores n„o diagonais de x e y (que ser„o sempre zero, por definiÁ„o)
+    na.m2<-sum(is.na(m2)) #
     if(na.action=="overall"){
-      mean(m1, na.rm=TRUE) -> mean         # mÈdia dos valores n„o-NA
-      m1[is.na(m1)] <- mean #imputa media no lugar dos NAs
+      mean(m1, na.rm=TRUE) -> mean         
+      m1[is.na(m1)] <- mean #
       mean(m2, na.rm=TRUE) -> mean2
       m2[is.na(m2)] <- mean2 
       mean(m12, na.rm=TRUE) -> mean3
@@ -81,10 +81,10 @@ mantel.easy<-function(x,y,nperm=1000, method="pearson",na.action="complete.obs",
       cor(m1,m2, method=method, use="all.obs") ->cor
       resmat<-rep(NA, nperm) 
       for (i in 1:nperm) {   
-        samp<-sample(1:n) #pra cada uma das 1000 perm, amostra de n (n˙mero de linhas da matriz quadrada) valores entre 1 e n
+        samp<-sample(1:n) #
         a<-m12[samp,samp] 
-        b<-m2 #a outra matriz vai ser a mesma definida anteriormente, porque so uma matriz eh permutada nesse teste
-        a<-a[row(a)!=col(a)] #aqui elimina-se da matriz permutada os valores diagonais (ou seja, zero)
+        b<-m2 #
+        a<-a[row(a)!=col(a)] #
         resmat[i]=cor(a,b,use="all.obs", method=method) 
       }
     }
